@@ -1,0 +1,43 @@
+<div class="row-fluid">
+  <div class="span9">
+    <h1>Kostenelemente</h1>
+  </div>
+  <div class="span3">
+    <br>
+    <%= link_to raw('<i class="icon-plus"></i>  Kostenelement anlegen'), new_cost_type_path, class:"btn btn-block" %>
+  </div>
+</div>
+<hr>
+  <table class="table table-hover" data-provides="rowlink">
+    <thead>
+      <th>Nummer</th>
+      <th>Titel</th>
+      <th>Preis</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+    <% @cost_types.each do |cost_type| %>
+    <tr>
+      <td class="span2">
+        <%= link_to cost_type.number, cost_type, class:"rowlink" %>
+      </td>
+      <td class="span7">
+        <%= cost_type.title %>
+      </td>
+      <td class="span1">
+        <%= cost_type.prize %>&euro;
+      </td>
+      <colspan>
+      <td class="span1">
+        <%= link_to raw('<i class="icon-pencil" style="color:white"></i>'), edit_cost_type_path(cost_type), class:"btn btn-small btn-primary" %>
+      </td>
+
+      <td class="span1">
+        <%= link_to raw('<i class="icon-trash" style="color:white"></i>'), cost_type, class:"btn  btn-small btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </colspan>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>

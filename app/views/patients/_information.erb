@@ -1,0 +1,61 @@
+
+<div class="row-fluid">
+ <div class="span4">
+  <div class="row-fluid">
+    <div class="span6">
+      IK-Nr.:
+    </div>
+    <div class="span6">
+      <%= @patient.iknr %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span6">
+      Adresse:
+    </div>
+    <div class="span6">
+      <%=  simple_format(@patient.address) %>
+    </div>
+  </div>
+ </div>
+ <div class="span4">
+  <div class="row-fluid">
+    <div class="span6">
+      Geburtsdatum:
+    </div>
+    <div class="span6">
+      <%= if @patient.birthday!=nil 
+      time(@patient.birthdayChild)
+      end%>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span6">
+      Versicherungsnummer:
+    </div>
+    <div class="span6">
+      <%= @patient.kknr %>
+    </div>
+  </div>
+ </div>
+ <div class="span4">
+  <div class="row-fluid">
+    <div class="span6">
+      Geb.Datum d. Kindes:
+    </div>
+    <div class="span6">
+      <%= if @patient.birthdayChild !=nil 
+      time(@patient.birthdayChild)
+      end%>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span6">
+      Krankenkasse:
+    </div>
+    <div class="span6">
+      <%= @patient.insurance.name %>
+    </div>
+  </div>
+ </div>
+</div>

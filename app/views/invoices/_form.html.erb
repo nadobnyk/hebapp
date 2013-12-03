@@ -1,0 +1,31 @@
+<%= form_for([@user,@patient,@invoice]) do |f| %>
+  <% if @invoice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
+
+      <ul>
+      <% @invoice.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label "Rechnungsnummer" %>
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label "Datum" %>
+     <input readonly value="<%= if @invoice.date !=nil 
+      @invoice.date.strftime('%d.%m.%Y') 
+      end%>" type="text" name="invoice[date]" id="invoice_date" data-behaviour='datepicker2' >
+  </div>
+  <hr>
+  <div class="row-fluid">
+    <div class="actions">
+      <div class="span2">
+        <%= f.submit 'Speichern', class:"btn btn-block btn-primary pull-right"%>
+      </div>
+    </div>
+</div>
+<% end %>

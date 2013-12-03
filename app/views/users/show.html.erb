@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @user.address %>
+</p>
+
+<p>
+  <b>mobileNumber:</b>
+  <%= @user.mobileNumber %>
+</p>
+<p>
+  <b>phoneNumber:</b>
+  <%= @user.phoneNumber %>
+</p>
+<p>
+  <b>ikNumber:</b>
+  <%= @user.ikNumber %>
+</p>
+<p>
+  <b>taxNumber:</b>
+  <%= @user.taxNumber %>
+</p>
+<p>
+  <b>bankName:</b>
+  <%= @user.bankName %>
+</p>
+<p>
+  <b>bankNumber:</b>
+  <%= @user.bankNumber %>
+</p>
+<p>
+  <b>accountNumber:</b>
+  <%= @user.accountNumber %>
+</p>
+<%= link_to 'Passwort ändern', edit_user_password_path %>
+<hr>
+<%= link_to 'Patients', user_patients_path(@user) %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

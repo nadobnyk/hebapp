@@ -1,0 +1,12 @@
+<h1>Kostenelement bearbeiten</h1>
+<hr>
+<%= render 'form' %>
+
+<%= javascript_tag do %>
+	toggle_types_description(<%=@cost_item.costType.id%>);
+<%end%>
+
+<div class="row-fluid">
+	<div class="span2">
+		<%= link_to 'Abbrechen', user_patient_invoice_cost_items_path(@user,@patient,@invoice),  class:"btn btn-block pull-left" %>
+</div>

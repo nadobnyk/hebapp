@@ -1,0 +1,56 @@
+<%= form_for(@cost_type) do |f| %>
+  <% if @cost_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cost_type.errors.count, "error") %> prohibited this cost_type from being saved:</h2>
+
+      <ul>
+      <% @cost_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row-fluid">
+  <div class="field span2">
+    <%= f.label "Nummer" %>
+    <%= f.text_field :number, class:"span12" %>
+  </div>
+  <div class="field span8">
+    <%= f.label "Titel" %>
+    <%= f.text_field :title , class:"span12"%>
+  </div>
+  <div class="input-append span1">
+    <div id="appendedInput">
+       <%= f.label "Preis" %>
+      <%= f.text_field :prize, class:"span12"%>
+      <span class="add-on">&euro;</span>
+    </div>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="field span12">
+    <%= f.label "Beschreibung" %><br />
+    <%= f.text_area :description, rows:10, class:"span12"%>
+  </div>
+<div>
+<div class="row-fluid">
+  <div class="field span4">
+    <%= f.label :type_class %>
+    <%= select_tag(:type_class, options_for_select(CostType::TYPES),name:"cost_type[type_class]",id:"cost_type_type_class", onchange:'toggle_interval_field(this.value)', value:@cost_type.type_class) %>
+  </div>
+  <div class="field span4" 
+    <%if @cost_type.type_class != CostType::TYPES[2] %>
+    style="visibility:hidden"
+    <% end %>
+   id="interval_field" >
+    <%= f.label "Taktung" %>
+    <%= f.number_field :interval %>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="actions span2">
+    <%= f.submit 'Speichern', class:"btn btn-block btn-primary pull-right"%>
+  </div>
+</div>
+<% end %>

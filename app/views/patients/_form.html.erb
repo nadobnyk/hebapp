@@ -1,0 +1,61 @@
+<%= form_for ([@user, @patient]) do |f| %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% @patient.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row-fluid">
+  <div class="span4 form-horizontal">
+    <div class="field control-group">
+      <%= f.label :name%>
+      <%= f.text_area :name, rows:1, required:true%>
+    </div>
+    <div class="field control-group">
+      <%= f.label :address %>
+      <%= f.text_area :address, rows:4, required:true %>
+    </div>
+    <div class="field control-group">
+    <%= f.label :insurance %>
+    <%= select_tag(:insurance_id, options_from_collection_for_select(@insurances, "id", "name", if @patient.insurance!=nil 
+     @patient.insurance.id end), required:true)%>
+    </div>
+  </div>
+  <div class="span6 form-horizontal">
+   <div class="field control-group">
+    <%= f.label :birthday %>
+    <input readonly value="<%= if @patient.birthday !=nil 
+    @patient.birthday.strftime('%d.%m.%Y') 
+    end%>" type="text" name="patient[birthday]" id="patient_birthday" data-behaviour='datepicker1' >
+    </div>
+    <div class="field control-group">
+      <%= f.label :birthdayChild %>
+      <input readonly value="<%= if @patient.birthdayChild !=nil 
+      @patient.birthdayChild.strftime('%d.%m.%Y') 
+      end%>" type="text" name="patient[birthdayChild]" id="patient_birthdayChild" data-behaviour='datepicker2' >
+    </div>
+    <div class="field control-group">
+      <%= f.label :iknr %>
+      <%= f.text_field :iknr , required:true%>
+    </div>
+    <div class="field control-group">
+      <%= f.label :kknr %>
+      <%= f.text_field :kknr , required:true%>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row-fluid">
+    <div class="actions">
+      <div class="span2">
+        <%= f.submit 'Speichern', class:"btn btn-block btn-primary pull-right"%>
+      </div>
+    </div>
+</div>
+  
+<% end %>

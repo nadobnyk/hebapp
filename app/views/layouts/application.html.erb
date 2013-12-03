@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>HEBapp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="row-fluid">
+	<div class="navbar">
+	   <div class="navbar-inner">
+	   	<a href="<% home_index_path %>", class="brand"><span class=" icon-check"></span>HEBapp</a>
+	    <% if user_signed_in? %>
+	    <ul class="nav">
+		  <li><%= link_to 'Home', home_index_path%></li>
+	      <li><%= link_to 'Patienten', user_patients_path(current_user), id:"patients"%></li>
+	      <li><%= link_to 'Krankenkassen', insurances_path, id:"insurances"%></li>
+	      <li><%= link_to 'Kostenelemente', cost_types_path, id:"costItems"%></li>
+	   </ul>
+	   <% end %>
+	   <ul class="nav pull-right">
+	   <% if user_signed_in? %>
+		  <li class="dropdown">
+		    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		      <%=current_user.name%>
+		      <b class="caret"></b>
+		    </a>
+		    <ul class="dropdown-menu">
+		      <li><%= link_to 'Einstellungen', current_user %></li>
+		      <li><%= link_to 'Abmelden', destroy_user_session_path, :method => :delete %></li>
+		    </ul>
+		  </li>
+		<% end %>
+	    </ul>
+	</div>
+  </div>
+</div>
+
+	<div class="container">
+	<%= yield %>
+	</div>
+<hr>
+</body>
+<foter>
+<div class="row-fluid footer" style="color:grey; text-align:center">
+	<div class="span3">
+		<%= link_to "Impressum", home_index_path, :target => "_blank" %>
+	</div>
+	<div class="span3">
+		<%= link_to "Über uns", home_index_path, :target => "_blank" %>
+	</div>
+	<div class="span3">
+		<%= link_to "Hilfe", home_index_path, :target => "_blank" %>
+	</div>
+	<div class="span3">
+		&copy;2013 Konrad Nadobny
+	</div>
+</div>
+</footer>
+</html>

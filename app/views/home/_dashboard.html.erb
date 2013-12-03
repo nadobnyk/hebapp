@@ -1,0 +1,18 @@
+<div class="row-fluid">
+	<div class="span12">
+		<% @patients.each do |patient| %>
+		<div class="dashboard_item">
+		<div class="dashboard_item-name"> <%= link_to patient.name, user_patient_path(current_user, patient) %> </div>
+		<div class="dashboard_item-invoices">
+		<table class="table table-hover" data-provides="rowlink">
+		<% patient.invoices.each do |invoice| %>
+			<tr>
+			<td><%= link_to "Rechnung "+invoice.number, user_patient_invoice_path(current_user, invoice.patient, invoice),  class:"rowlink" %></td>
+			<td><%= currency(invoice.sum) %></td>
+			</tr>
+		<% end %>
+		</table>
+		</div>
+		<% end %>
+	</div>
+</div>

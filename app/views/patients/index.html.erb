@@ -1,0 +1,35 @@
+<div class="row-fluid">
+	<div class="span10">
+		<h1>Patienten</h1>
+	</div>
+	<div class="span2">
+		<br>
+		<%= link_to raw('<i class="icon-plus"></i>  Patient Anlegen'), new_user_patient_path(@user), class:"btn btn-block" %>
+	</div>
+</div>
+	<table class="table table-hover" data-provides="rowlink">
+		<% @patients.each do |patient| %>
+		<tr>
+			<td>
+				<%= link_to patient.name, user_patient_path(@user, patient), class:"rowlink" %>
+			</td>
+			<colspan>
+				<td class="span1">
+					<%if patient.flaged == true%>
+					<%= link_to raw('<i class="icon-flag" style="color:white"></i>'), flag_path(@user, patient), class:"btn btn-small btn-inverse", method: :flag %>
+					<%else%>
+						<%= link_to raw('<i class="icon-flag"></i>'), flag_path(@user, patient), class:"btn btn-small", method: :flag %>
+					<%end%>
+				</td>
+				<td class="span1">
+					<%= link_to raw('<i class="icon-pencil" style="color:white"></i>'), edit_user_patient_path(@user, patient), class:"btn btn-small btn-primary" %>
+				</td>
+
+				<td class="span1">
+					<%= link_to raw('<i class="icon-trash" style="color:white"></i>'), user_patient_path(@user, patient), class:"btn btn-small btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</colspan>
+		</tr>
+		<% end %>
+	</table>
+</div>

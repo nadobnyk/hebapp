@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<div class="row-fluid">
+  <div class="span10">
+    <strong><%= simple_format(@insurance.name) %></strong>
+  </div>
+  <div class="span2">
+  <div class="span6"><%= link_to raw('<i class="icon-pencil" style="color:white"></i>'), edit_insurance_path(@insurance), class:"btn btn-primary pull-right" %></div>
+  <div class="span6"><%= link_to 'Zurück', insurances_path, class:"btn btn-block" %></div>
+  </div>
+</div>
+<strong><%= simple_format(@insurance.address) %></strong>
+<hr>
+
+<%= render :partial => 'shared/invoices' %>

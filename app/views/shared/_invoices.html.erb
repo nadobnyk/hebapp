@@ -1,0 +1,17 @@
+
+<table class="table table-hover" data-provides="rowlink">
+<tr>
+  <th>Rechnung</th>
+  <th>vom</th>
+  <th>über</th>
+</tr>
+<% @invoices.each do |invoice| %>
+  <tr>
+    <td><%= link_to "Rechnung "+invoice.number, user_patient_invoice_path(@user, invoice.patient, invoice),  class:"rowlink" %></td>
+    <td><%= time(invoice.date) %></td>
+    <td><%= currency(invoice.sum) %></td>
+    <%#= link_to 'Edit', edit_user_patient_invoice_path(@user, @patient, invoice) %>
+    <%#= link_to 'Destroy', user_patient_invoice_path(@user, @patient, invoice), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </tr>
+  <%end%>
+</table>

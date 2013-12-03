@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyText
+  address: MyText
+  birthday: 2013-03-14
+  user: 
+  insurance: 
+
+two:
+  name: MyText
+  address: MyText
+  birthday: 2013-03-14
+  user: 
+  insurance: 

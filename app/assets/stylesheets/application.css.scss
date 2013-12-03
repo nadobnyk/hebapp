@@ -1,0 +1,50 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require bootstrap-datepicker
+ *= require bootstrap-timepicker
+ *= require _font-awesome
+ *= require _font-awesome-ie7.min
+ *= require_tree .
+ */
+
+$navbarBackground: #094cdb;
+$navbarBackgroundHighlight: #094cdb;
+$navbarHeight:50px;
+$navbarLinkColor: #FFFFFF;
+$navbarLinkColorHover: #FFFFFF;
+$navbarLinkColorActive: #FFFFFF;
+$navbarLinkBackgroundHover:#2266f5;
+$navbarLinkBackgroundActive:#2266f5;
+$baseBorderRadius:0;
+$borderRadiusSmall:0;
+$borderRadiusLarge:0;
+$linkColor:#094cdb;
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+@import "bootstrap-datepicker";
+@import 'font-awesome';
+
+.brand{
+
+	font-family: "Arial Black", Gadget, sans-serif !important;
+	text-shadow: black 0.1em 0.1em 0.2em !important;
+}
+.brand:hover{
+	 background-color:#2266f5 !important;
+}
+html,body,.container{
+    height: 95%
+}
+.footer{
+height:5%
+}

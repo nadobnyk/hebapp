@@ -1,0 +1,79 @@
+<%= form_for([@user,@patient,@invoice,@cost_item])  do |f| %>
+  <% if @cost_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cost_item.errors.count, "error") %> prohibited this cost_item from being saved:</h2>
+
+      <ul>
+      <% @cost_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row-fluid form-horizontal">
+    <div class="span6 form-horizontal">
+        <div class="field control-group">
+          <%= f.label "Datum" %>
+          <input required="true" readonly value="<%if@cost_item.date!=nil%>
+           <%= @cost_item.date.strftime('%d.%m.%Y') %>
+           <%else%>
+           <%= Date.today.strftime('%d.%m.%Y') %>
+           <%end%>" type="text" name="cost_item[date]" id="cost_item_date" data-behaviour='datepicker2' >
+      </div>
+      <div class="field control-group">
+        <%= f.label "Kostenelement" %>
+        <%= select_tag(:costType_id, options_from_collection_for_select(@cost_types, "id", "number", if @cost_item.costType!=nil 
+     @cost_item.costType.id end),required:true, prompt:"Auswählen",  onchange:'toggle_types_description(this.value)')%>
+      </div>
+      <div class="input-append row-fluid" id="quantity_div" style="visibility:hidden">
+        <div id="appendedInput">
+          <%= f.number_field :quantity, value:1, class:"span2"%>
+          <span class="add-on">km</span>
+        </div>
+      </div>
+      <div class="input-append row-fluid" id="times_div" style="visibility:hidden">
+        <div id="appendedInput">
+          <div class="row-fluid">
+            <div class="input-append input-prepend bootstrap-timepicker">
+              <span class="add-on">von</span>
+              <input type="text" name="cost_item[startTime]" id="cost_item_start_time" class="input-small timepicker_start" >
+              <span class="add-on">
+                  <i class="icon-time"></i>
+              </span>
+            </div>
+            <div class="input-append input-prepend bootstrap-timepicker">
+              <span class="add-on">bis</span>
+              <input type="text" name="cost_item[endTime]" id="cost_item_end_time" class="input-small timepicker_end" >
+              <span class="add-on">
+                  <i class="icon-time"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <h2><text id="prize"></text></h2>
+      <h3><text id="title"></text></h3>
+      <text id="description"></text>
+    </div>
+  </div>
+<hr>
+<div class="row-fluid">
+    <div class="actions">
+      <div class="span2">
+        <%= f.submit 'Speichern', class:"btn btn-block btn-primary pull-right"%>
+      </div>
+    </div>
+</div>
+<% end %>
+
+<% if @cost_item.costType != nil %>
+  <%= javascript_tag do%>
+    toggle_types_description(<%= @cost_item.costType %>);
+  <% end %>
+<% end %>
+<%= javascript_tag do %>
+    window.cost_types = <%= raw @cost_types.to_json %>
+    window.cost_item = <%= raw @cost_item.to_json %>
+<% end %>

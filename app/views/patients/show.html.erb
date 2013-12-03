@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<div class="row-fluid">
+  <div class="span10">
+    <h2><%= @patient.name %></h2>
+  </div>
+  <div class="span2">
+  <div class="span6"><%= link_to raw('<i class="icon-pencil" style="color:white"></i>'), edit_user_patient_path(@user, @patient), class:"btn btn-primary pull-right" %></div>
+  <div class="span6"><%= link_to 'Zurück', user_patients_path(@user), class:"btn btn-block" %></div>
+  </div>
+</div>
+<hr>
+
+<%= render 'information' %>
+
+<hr>
+
+
+<div class="row-fluid">
+  <div class="span3 offset9">
+    <%= link_to raw('<span style="color:white"><i class="icon-plus"></i>  Rechnung anlegen</span>'), new_user_patient_invoice_path(@user,@patient), class:"btn btn-primary btn-block" %>
+  </div>
+</div>
+<br>
+<%= render :partial => 'shared/invoices' %>
+<br>
+<div class="row-fluid">
+  <div class="span3 offset9">
+    <%= link_to raw('<span style="color:white"><i class="icon-plus"></i>  Rechnung anlegen</span>'), new_user_patient_invoice_path(@user,@patient), class:"btn btn-primary btn-block" %>
+  </div>
+</div>

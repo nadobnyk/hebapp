@@ -1,0 +1,58 @@
+<h2>Registrieren</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+
+<div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_area :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address %>
+  </div>
+  <div class="field">
+    <%= f.label :mobileNumber %><br />
+    <%= f.text_field :mobileNumber %>
+  </div>
+      <div class="field">
+    <%= f.label :phoneNumber %><br />
+    <%= f.text_field :phoneNumber %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ikNumber %><br />
+    <%= f.text_field :ikNumber %>
+  </div>
+  <div class="field">
+    <%= f.label :taxNumber %><br />
+    <%= f.text_field :taxNumber %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bankName %><br />
+    <%= f.text_field :bankName %>
+  </div>
+  <div class="field">
+    <%= f.label :bankNumber %><br />
+    <%= f.text_field :bankNumber %>
+  </div>
+  <div class="field">
+    <%= f.label :accountNumber %><br />
+    <%= f.text_field :accountNumber %>
+  </div>
+
+  <div><%= f.submit "Registrieren" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
